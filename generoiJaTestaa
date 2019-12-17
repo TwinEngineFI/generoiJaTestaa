@@ -1,0 +1,48 @@
+import java.util.Random;
+
+public class generoiJaTestaa{
+    static Random r = null;
+    
+    public static void main(String[] args){
+        r = new Random();
+        
+        for (int i=0; i<10; i++){
+            testaa();
+        }
+    } // Starting here;
+    
+public static void testaa(){
+  try{
+    System.out.println(generoi());
+} catch (ArithmeticException ae) {
+  Random r = new Random();
+  
+  ArrayList<String> lista = new ArrayList<String>();
+  lista.add("VillePoikkeus");
+  lista.add("MinttuPoikkeus");
+  lista.add("KallePoikkeus");
+  int poikkeusSana = lista.get(r.nextInt(lista.size()));
+  System.out.println(poikkeusSana);
+}
+    
+// Throws Error: illegal start of expression for generoi()
+    public static int generoi() throws VillePoikkeus, MinttuPoikkeus, KallePoikkeus {
+        
+        int n = r.nextInt(4);
+        switch (n){
+            case 0:
+                return 50 - r.nextInt(100);
+            case 1:
+                throw new VillePoikkeus();
+            case 2:
+                throw new MinttuPoikkeus();
+            case 3:
+                throw new KallePoikkeus();
+        }
+        // ei mahdollinen, mutta kääntäjä vaatii tämän
+        return -1;
+    }
+}
+class VillePoikkeus extends Exception {}
+class KallePoikkeus extends Exception {}
+class MinttuPoikkeus extends Exception {}
