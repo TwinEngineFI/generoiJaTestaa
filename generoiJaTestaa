@@ -6,6 +6,7 @@ public class generoiJaTestaa{
     public static void main(String[] args){
         r = new Random();
         
+        
         for (int i=0; i<10; i++){
             testaa();
         }
@@ -13,19 +14,28 @@ public class generoiJaTestaa{
     
 public static void testaa(){
   try{
-    System.out.println(generoi());
-} catch (ArithmeticException ae) {
+    generoi();
+  } catch (ArithmeticException ae){
   Random r = new Random();
-  
-  ArrayList<String> lista = new ArrayList<String>();
-  lista.add("VillePoikkeus");
-  lista.add("MinttuPoikkeus");
-  lista.add("KallePoikkeus");
-  int poikkeusSana = lista.get(r.nextInt(lista.size()));
+  String[] lista = {"VillePoikkeus!", "MinttuPoikkeus!", "KallePoikkeus!"};
+  String poikkeusSana = lista[r.nextInt(lista.length)];
   System.out.println(poikkeusSana);
-}
+  }
+} 
+/*
+Oheisessa ohjelmassa on määritelty metodi generoi(), joka 
+  palauttaa kokonaisluvun.
+Jos metodin suorituksessa jokin menee pieleen, se heittää 
+  yhden kolmesta mahdollisesta poikkeuksesta:
+
+VillePoikkeus, MinttuPoikkeus tai KallePoikkeus.
+
+Tehtäväsi on kirjoittaa metodi testaa(), joka kutsuu generoi-metodia ja tulostaa
+- metodin palauttaman kokonaisluvun, jos virhettä ei tapahtunut, TAI
+- merkkijonon VillePoikkeus!, KallePoikkeus! tai MinttuPoikkeus!, jos metodi 
+  heitti tällaisen poikkeuksen.
+*/
     
-// Throws Error: illegal start of expression for generoi()
     public static int generoi() throws VillePoikkeus, MinttuPoikkeus, KallePoikkeus {
         
         int n = r.nextInt(4);
@@ -43,6 +53,7 @@ public static void testaa(){
         return -1;
     }
 }
+
 class VillePoikkeus extends Exception {}
 class KallePoikkeus extends Exception {}
 class MinttuPoikkeus extends Exception {}
