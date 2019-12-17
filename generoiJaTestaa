@@ -14,14 +14,17 @@ public class generoiJaTestaa{
     
 public static void testaa(){
   try{
-    generoi();
-  } catch (ArithmeticException ae){
-  Random r = new Random();
-  String[] lista = {"VillePoikkeus!", "MinttuPoikkeus!", "KallePoikkeus!"};
-  String poikkeusSana = lista[r.nextInt(lista.length)];
-  System.out.println(poikkeusSana);
+    int luku = generoi();
+    System.out.println(luku);
+  } catch (VillePoikkeus a){
+  System.out.println("VillePoikkeus!");
+  }catch (MinttuPoikkeus a){
+  System.out.println("MinttuPoikkeus!");
+  }catch (KallePoikkeus a){
+  System.out.println("KallePoikkeus!");
   }
-} 
+}
+
 /*
 Oheisessa ohjelmassa on määritelty metodi generoi(), joka 
   palauttaa kokonaisluvun.
